@@ -8,6 +8,8 @@ import {ProductDetailComponent} from './products/product-detail/product-detail.c
 import {ProductsResolverService} from './products/products-resolver.service';
 import {ShoppingListItemsComponent} from './shopping-list-items/shopping-list-items.component';
 import {AuthenticationSectionComponent} from './authenticationSection/authenticationSection.component';
+import {AdminSectionComponent} from './adminSection/adminSection.component';
+import {AdminEditComponent} from './adminSection/admin-edit/admin-edit.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/products', pathMatch: 'full'},
@@ -31,7 +33,27 @@ const appRoutes: Routes = [
     ]
   },
   { path: 'shopping-list-items', component: ShoppingListItemsComponent },
-  { path: 'authenticationSection', component: AuthenticationSectionComponent }
+  { path: 'authenticationSection', component: AuthenticationSectionComponent },
+  { path: 'adminSection', component: AdminSectionComponent},
+  {
+    path: 'admin-edit',
+    component: ProductsComponent,
+    canActivate: [AuthenticationSectionGuard],
+    children: [
+      { path: '', component: ProductStartComponent },
+      { path: 'new', component: ProductEditComponent },
+      {
+        path: ':id',
+        component: ProductDetailComponent,
+        resolve: [ProductsResolverService]
+      },
+      {
+        path: ':id/edit',
+        component: ProductEditComponent,
+        resolve: [ProductsResolverService]
+      }
+    ]
+  }
 ];
 
 

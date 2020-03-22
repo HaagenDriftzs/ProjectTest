@@ -18,6 +18,8 @@ import {ShoppingListService} from './shopping-list-items/shopping-list-items.ser
 import {ProductService} from './products/product.service';
 import {ProductStartComponent} from './products/product-start/product-start.component';
 import {AppRoutingModule} from './app-routing.module';
+import {AdminSectionComponent} from './adminSection/adminSection.component';
+import { AdminEditComponent } from './adminSection/admin-edit/admin-edit.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import {AppRoutingModule} from './app-routing.module';
     HeaderComponent,
     ProductEditComponent,
     DropdownDirective,
-    ProductStartComponent
+    ProductStartComponent,
+    AdminSectionComponent,
+    AdminEditComponent
   ],
   imports: [
     BrowserModule,
